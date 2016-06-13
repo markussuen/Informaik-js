@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+
+<head>
+    <title>String-Opertation</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta name="generator" content="Webocton - Scriptly (www.scriptly.de)" />
+    
+    <script>
+    //1: Wörter zählen
+    function woerter(text) {
+        var splited = text.split(" ");
+        splited = splited.sort();
+        var zahler = 0;
+        for (var e = 0; e <= splited.length -1;e++){
+            if (splited[e] === "" || splited[e] === " "){
+
+            }
+            else{
+                zahler += 1;
+            }
+        }
+        document.form1.aus.value = ("Anzahl Wörter: " + zahler);
+    };
+    //2: Buchstaben zählen
+    function buchstaben(text){
+        var splited = text.split(" ");
+        var newarray = [];
+        for (var i in splited) {
+            newarray += splited[i].split();
+        }
+        document.form2.ausg.value = ("Anzahl Buchstaben: " + newarray.length);
+    }
+    //3: Welche Buchstaben
+    function nbuchstaben(text) {
+        document.form3.ausga.innerHTML = "";
+        text = text.toLowerCase();
+        text = text.split("");
+        text = text.sort();
+        var newarray = [];
+        var counter = 1;
+        var max = text.length -1;
+        for (var i = 0; i <= max; i++){
+            if (i === 0 || text[i] === " "){
+
+            }
+            else if (text[i]===text[i-1]){
+                counter +=1;
+            }
+            else if (text[i]!=text[i-1] && text[i-1]!= " "){
+                document.form3.ausga.value += (text[i-1] + " : " + counter + "\r");
+                counter = 1;
+            }
+        }
+        document.form3.ausga.value += (text[max] + " : " + counter + "\r");
+    }
+    //4: Suche
+    var repetition = 0;
+    var one = false;
+    var i = 0;
+    var array = [];
+    var ergebnis = [];
+    function search(objekt){
+        ergebnis = [];
+        array = document.getElementById("texteingabe").innerHTML;
+        array = array.split(" ");
+        repetition = 0;
+        one = false;
+        for (i in array){
+            if (array[i] == objekt){ 
+                one = true;
+                repetition += 1;                                                               
+                ergebnis.push(parseFloat(i) + 1)  
+            }
+        };
+        if (one && repetition == 1){
+            var position = ergebnis[0];
+            document.p.paragraph.value = ('Das Wort "' + objekt + '" ist an Stelle ' + position);  
+        }
+        else if (one && repetition != 1){
+            document.p.paragraph.value = ('Das Wort "' + objekt + '" ist an Stelle ' + ergebnis);     
+        }
+        else {
+            document.p.paragraph.value = 'Das Wort "' + objekt + '" wurde nicht gefunden';
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <h1>String-Operation</h1>
+    <table>
+        <tr>
+            <td>
+                <form name="texteingabeform">
+                    <textarea id="texteingabe" name="texteingabe"></textarea>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="W&ouml;rter z&auml;hlen" onclick="woerter(document.texteingabeform.texteingabe.value)"/>
+            </td>
+            <td>
+                <input type="button" value="Buchstaben z&auml;hlen" onclick="buchstaben(document.texteingabeform.texteingabe.value)"/>
+            </td>
+            <td>
+                <input type="button" value="Welche Buchstaben?" onclick="nbuchstaben(document.texteingabeform.texteingabe.value)"/>
+            </td>
+            <td>
+                <input type="button" value="Buchstaben suchen" onclick="search(document.form4.eingabe.value)" name="button" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form name="form1">
+                    <div>Ausgabe: Anzahl W&ouml;rter</div>
+                    <textarea name="aus"></textarea>
+                </form>
+            </td>
+            <td>
+                <form name="form2">
+                    <div>Ausgabe: Anzahl Buchstaben</div>
+                    <textarea name="ausg"></textarea>
+                </form>
+            </td>
+            <td>
+                <form name="form3">
+                    <div>Ausgabe: Welche Buchstaben?</div>
+                    <textarea name="ausga"></textarea>
+                </form>
+            </td>
+            <td>
+                <form name="form4">
+                    <div>zu suchendes Wort: </div>
+                    <textarea name="eingabe"></textarea>
+                </form>
+            </td>    
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            
+            <form name="p">
+                <div>Ausgabe: Welche Stelle im Satz hat dieses Wort. </div>
+                <textarea name="paragraph"></textarea>
+            </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

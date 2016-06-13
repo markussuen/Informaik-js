@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+
+<head>
+    <title>Titel</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta name="generator" content="Webocton - Scriptly (www.scriptly.de)" />
+
+    <script>
+    function is_valid(email_adress) {
+        var array = email_adress.split("");
+        //document.getElementById("split").innerHTML = array;
+        var check = false;
+        var check2 = false;
+        var counter = 0;
+        for (var i in array) {
+            if (array[i] == "@"){
+                check = true;
+                counter += 1
+            }
+            else if (array[i] == "."){
+                check2 = true;
+            }
+            else {
+                
+            }
+        }
+        /*document.getElementById("var").innerHTML = check;
+        document.getElementById("vars").innerHTML = check2;*/
+        if (array.length == 0){
+            document.getElementById("meldung").innerHTML = "Please enter an Email Adress";            
+        }
+        else if (counter != (1 || 0)){
+            document.getElementById("meldung").innerHTML = "This Email Adress is invalid";
+        }
+        else if (check && check2) {
+            document.getElementById("meldung").innerHTML = "This Email Adress is valid";     
+        }   
+        else {
+            document.getElementById("meldung").innerHTML = "This Email Adress is invalid";
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <form name="form1">
+        <input name="eingabe" type="text"/>
+        <input name="knopf" type="button"  onclick="is_valid(document.form1.eingabe.value)"/>
+    </form>
+    <p id="meldung"></p>
+    <p id="split"></p>
+    <p id="var"></p>
+    <p id="vars"></p>
+</body>
+</html>
