@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+
+<head>
+    <title>Dateioperation</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta name="generator" content="Webocton - Scriptly (www.scriptly.de)" />
+
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <script language="javascript" type="text/javascript">
+    document.cookie = "testCookie=test";
+    function modify_coun(val) {
+    var coun = document.getElementById('coun').value;
+    var new_coun = parseInt(coun,10) + val;
+
+    if (new_coun < 0) {
+        new_coun = 0;
+    }
+
+    document.getElementById('coun').value = new_coun;
+    return new_coun;
+    }
+
+    </script>
+</head>
+
+<body>
+    <!-- Counter Begin -->
+        <p>Counter Operation</p>
+        <label for="coun"><abbr title="Counter">Counter</abbr></label>
+        <input id="coun" value="0" />
+        <button id="down" onclick="modify_coun(-1)">-1</button>
+        <button id="up" onclick="modify_coun(1)">+1</button>
+    <!-- Counter End -->
+         
+    <!-- Cookie Begin -->
+        <p>Cookies setzen und lesen (nur IE)</p>        
+        <a href="#" onClick="document.cookie='Cookie wurde ausgelesen'">
+        setzen</a>
+        <a href="#" onClick="alert(document.cookie)">lesen</a>
+</body>
+</html>
