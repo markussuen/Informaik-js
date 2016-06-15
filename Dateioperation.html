@@ -12,7 +12,6 @@
 
     <link href="style.css" type="text/css" rel="stylesheet" />
     <script language="javascript" type="text/javascript">
-    document.cookie = "testCookie=test";
     function modify_coun(val) {
     var coun = document.getElementById('coun').value;
     var new_coun = parseInt(coun,10) + val;
@@ -24,7 +23,11 @@
     document.getElementById('coun').value = new_coun;
     return new_coun;
     }
-
+        
+    function cookies(name){
+        var name = prompt("Gebe hier was ein, um es in ein Cookie zu schreiben");
+        document.cookie = name;
+    }
     </script>
 </head>
 
@@ -38,9 +41,8 @@
     <!-- Counter End -->
          
     <!-- Cookie Begin -->
-        <p>Cookies setzen und lesen (nur IE)</p>        
-        <a href="#" onClick="document.cookie='Cookie wurde ausgelesen'">
-        setzen</a>
-        <a href="#" onClick="alert(document.cookie)">lesen</a>
+        <button onclick="cookies()">SetCookie</button>
+        <button onclick="alert(document.cookie)">Alert</button>
+    <!-- Cookie End -->
 </body>
 </html>
