@@ -13,15 +13,15 @@
     <link href="style.css" type="text/css" rel="stylesheet" />
     <script language="javascript" type="text/javascript">
     function modify_coun(val) {
-    var coun = document.getElementById('coun').value;
-    var new_coun = parseInt(coun,10) + val;
+        var coun = document.getElementById('coun').value;
+        var new_coun = parseInt(coun,10) + val;
 
-    if (new_coun < 0) {
-        new_coun = 0;
-    }
+        if (new_coun < 0) {
+            new_coun = 0;
+        }
 
-    document.getElementById('coun').value = new_coun;
-    return new_coun;
+        document.getElementById('coun').value = new_coun;
+        return new_coun;
     }
         
     function cookies(name){
